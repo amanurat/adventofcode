@@ -3,10 +3,6 @@ import extensions.sum
 import rx.Observable
 import java.io.File
 
-fun main(args: Array<String>) {
-    day6()
-}
-
 fun day6() {
     println("Day 6")
 
