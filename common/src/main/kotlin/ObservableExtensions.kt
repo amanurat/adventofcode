@@ -18,6 +18,22 @@ fun Observable<Int>.sum() = lift<Int>(
         }
 )
 
+fun <T> Observable<T>.skipOnIndex(predicate: (Int) -> Boolean): Observable<T> {
+    return lift(Observable.Operator {
+        object : SubscriberAdapter<T>(it) {
+
+            private var count = 0
+
+            override fun onNext(t: T) {
+                if (!predicate(count)) {
+                    it.onNext(t)
+                }
+                count++;
+            }
+        }
+    })
+}
+
 abstract class SubscriberAdapter<T>(val s: Subscriber<*>) : Subscriber<T>() {
 
     override fun onError(e: Throwable) {
