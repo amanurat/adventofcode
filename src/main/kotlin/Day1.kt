@@ -1,8 +1,32 @@
+import extensions.SubscriberAdapter
+import extensions.chars
+import extensions.sum
 import rx.Observable
 import java.io.File
 
-fun main(args: Array<String>) {
-    File("day1/input.txt").chars()
+fun day1() {
+    println("Day 1")
+
+    val file = File("input/day1.txt")
+    print("1: "); partOne(file)
+    print("2: "); partTwo(file)
+}
+
+private fun partOne(input: File) {
+    input.chars()
+            .map {
+                when (it) {
+                    '(' -> 1
+                    ')' -> -1
+                    else -> throw Error()
+                }
+            }
+            .sum()
+            .subscribe { println(it) }
+}
+
+private fun partTwo(input: File) {
+    input.chars()
             .map {
                 when (it) {
                     '(' -> 1
@@ -26,5 +50,5 @@ fun main(args: Array<String>) {
             })
             .takeUntil { it.first == -1 }
             .last()
-            .subscribe { println(it) }
+            .subscribe { println(it.second) }
 }

@@ -1,3 +1,5 @@
+package extensions
+
 fun minimumOf(vararg numbers: Int): Int {
     var minimum: Int = numbers[0]
     for (number in numbers) {

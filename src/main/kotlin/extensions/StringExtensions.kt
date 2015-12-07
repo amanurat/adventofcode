@@ -1,3 +1,5 @@
+package extensions
+
 fun String.chars(): Iterable<Char> {
     return object : Iterable<Char> {
         override fun iterator(): Iterator<Char> {

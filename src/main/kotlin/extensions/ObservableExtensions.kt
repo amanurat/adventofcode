@@ -1,3 +1,5 @@
+package extensions
+
 import rx.Observable
 import rx.Subscriber
 

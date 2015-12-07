@@ -1,13 +1,18 @@
+import extensions.SubscriberAdapter
+import extensions.chars
+import extensions.skipOnIndex
 import rx.Observable
 import java.io.File
 
-fun main(args: Array<String>) {
-    val file = File("day3/input.txt")
-    partOne(file)
-    partTwo(file)
+fun day3() {
+    println("Day 3")
+
+    val file = File("input/day3.txt")
+    print("1: "); partOne(file)
+    print("2: "); partTwo(file)
 }
 
-fun partOne(input: File) {
+private fun partOne(input: File) {
     input.chars()
             .toCoordinates()
             .distinct()
@@ -15,7 +20,7 @@ fun partOne(input: File) {
             .subscribe { println(it) }
 }
 
-fun partTwo(input: File) {
+private fun partTwo(input: File) {
     Observable.merge(
             input.chars()
                     .skipOnIndex { it % 2 == 0 }
