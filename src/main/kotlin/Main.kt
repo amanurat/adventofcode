@@ -1,4 +1,5 @@
 fun main(args: Array<String>) {
+    day9(); println()
     day8(); println()
     day7(); println()
     day6(); println()
