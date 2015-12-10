@@ -36,6 +36,10 @@ fun <T> Observable<T>.skipOnIndex(predicate: (Int) -> Boolean): Observable<T> {
     })
 }
 
+fun <T> Observable<T>.printIt() {
+    subscribe { println(it) }
+}
+
 abstract class SubscriberAdapter<T>(val s: Subscriber<*>) : Subscriber<T>() {
 
     override fun onError(e: Throwable) {
